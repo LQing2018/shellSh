@@ -1,17 +1,4 @@
-# #!/bin/sh
-
-# name=$1
-
-# echo "the ${name} are great man!"
-
-
 #!/bin/sh
-# @author Hubal  
-# @Email Hubal@123.com
-# @createBy 2018-11-30
-# Shell脚本提交git代码 简单,快速,高效
-#
-# author = Hubal
 echo ' >>>>>> start push <<<<<< '  
 echo " ====== 当前分支 ====== "  
 branch= git branch
@@ -19,21 +6,21 @@ echo $branch
 
 # 判断参数1是否包含参数2
 contains_str(){
-    # echo " >>> $1 <<< "
-    # echo " <<< $2"
-    
+    echo " >>> $1 <<< "
+    echo " <<< $2"
+
     contains_result=$(echo $1 | grep "${2}")
     if [[ -n $contains_result  ]] ; then
           return 1
       else
-          return 0     
+          return 0
     fi
-    
+
 }
 
 git_add(){
     echo ">>>>>> 执行 git add 之前,本地文件状态如下 <<<<<<"
-    git status 
+    git status
     statusResult=$(git status)
     no_change="nothing to commit"
 
