@@ -2,35 +2,25 @@
 
 if [[ $1 == "test" ]]; then
         h5base = "https://api.hacitd.com/base-api-test"
-        h5api = "https://api.hacitd.com/buyer-api-test"
-        h5seller = 'https://api.hacitd.com/seller-api-test'
-        baseApi = 'http://zxkwx-boot.hacitd.com/wx-act'
-        henanapi = 'https://ha.tdg10086.cn/test-wx-act';
-elif [[ $1 == "prod" ]] ; then
-        h5base = "https://api.hacitd.com/base-api"
-        h5api = "https://api.hacitd.com/buyer-api"
-        h5seller = 'https://api.hacitd.com/seller-api'
-        baseApi = 'http://zxkwx-boot.hacitd.com/test-wx-act'
-        henanapi = 'https://ha.tdg10086.cn/wx-act';
+        # h5api = "https://api.hacitd.com/buyer-api-test"
+        # h5seller = 'https://api.hacitd.com/seller-api-test'
+        # baseApi = 'http://zxkwx-boot.hacitd.com/wx-act'
+        # henanapi = 'https://ha.tdg10086.cn/test-wx-act';
+
 else
         return 0
 fi
 
 echo $h5base
-echo $baseApi
-echo $baseApi
-echo $baseApi
-echo $baseApi
+# echo $h5api
+# echo $h5seller
+# echo $baseApi
+# echo $henanapi
 
-echo ' >>>>>> start push <<<<<< '
-echo " ====== 当前分支 ====== "
+echo ' >>>>>> start push <<<<<< '  
+echo " ====== 当前分支 ====== "  
 branch= git branch
-echo $branch
- if [[ -n $contains_result  ]] ; then
-          return 1
-      else
-          return 0
-    fi
+echo $branch 
 
 # 判断参数1是否包含参数2
 contains_str(){
