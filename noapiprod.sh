@@ -1,8 +1,13 @@
 #!/bin/sh
-echo ' >>>>>> start push <<<<<< '  
-echo " ====== 当前分支 ====== "  
+echo ' >>>>>> start push <<<<<< '
+echo " ====== 当前分支 ====== "
 branch= git branch
-echo $branch 
+echo $branch
+ if [[ -n $contains_result  ]] ; then
+          return 1
+      else
+          return 0
+    fi
 
 # 判断参数1是否包含参数2
 contains_str(){
@@ -25,36 +30,36 @@ git_add(){
     no_change="nothing to commit"
 
     contains_str "$statusResult" "$no_change"
-
     if [[ $? == 1 ]]; then
         echo "=== 当前没有新增或者修改的文件 ==="
+
         git_push
         exit
     fi
 
     read -p "是否确定add？Y|N : " add_params
-    if [[ $add_params == "Y" || $add_params == "y" ]]; then 
+    if [[ $add_params == "Y" || $add_params == "y" ]]; then
             git add .
-    else 
-        exit 
-    fi     
+    else
+        exit
+    fi
 }
 
 git_commit(){
      echo ">>>>>> 执行 git commit 之前,本地文件状态如下 <<<<<<"
-     git status 
+     git status
      read -p "是否确定commit？Y|N : " commit_params
      if [[ $commit_params == "Y" || $commit_params == "y" ]] ; then
              read -p "请输入commit信息: " commit_msg
-             if [ -z $commit_msg  ] ; then 
+             if [ -z $commit_msg  ] ; then
                  git commit -m "git commit by $author" .
              else
-                 git commit -m $commit_msg .    
+                 git commit -m $commit_msg .
              fi
-     elif [[ $commit_params == "N" || $commit_params == "n" ]] ; then 
-          exit 
-     else 
-         exit    
+     elif [[ $commit_params == "N" || $commit_params == "n" ]] ; then
+          exit
+     else
+         exit
      fi
 }
 
@@ -100,7 +105,7 @@ git_push(){
 
 
 read -p "默认push当前分支，Q代表quit,其他单词代表切换分支 : " branch
-if [[ $branch == "Y" || $branch == "y" || -z $branch ]] ; then 
+if [[ $branch == "Y" || $branch == "y" || -z $branch ]] ; then
         # echo  "你输入的是:  $branch "
         statusResult=$(git status)
         to_commit="Changes to be committed"
