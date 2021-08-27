@@ -1,21 +1,52 @@
 #!/bin/sh
 
 if [[ $1 == "test" ]]; then
-        h5base = "https://api.hacitd.com/base-api-test"
-        # h5api = "https://api.hacitd.com/buyer-api-test"
-        # h5seller = 'https://api.hacitd.com/seller-api-test'
-        # baseApi = 'http://zxkwx-boot.hacitd.com/wx-act'
-        # henanapi = 'https://ha.tdg10086.cn/test-wx-act';
+# 读取内容
+# cat ./js/api.js
 
-else
-        return 0
+# 替换
+# sed -i 's/h5base/xxx/g' ./js/api.js
+
+# 删除所有包含‘h5base’的行
+# sed -i '/h5base/'d ./js/api.js
+
+# 删除所有
+cat /dev/null > ./js/api.js
+
+# 删除12行
+# sed -i '12d' ./js/api.js
+
+# echo "=== api已修改 ==="
+echo 'var h5api="https://api.hacitd.com/buyer-api-test"' >> ./js/api.js
+echo 'var h5seller="https://api.hacitd.com/seller-api-test"' >> ./js/api.js
+echo 'var baseApi="http://zxkwx-boot.hacitd.com/test-wx-act"' >> ./js/api.js
+echo 'var henanapi="https://ha.tdg10086.cn/test-wx-act"' >> ./js/api.js
+
 fi
 
-echo $h5base
-# echo $h5api
-# echo $h5seller
-# echo $baseApi
-# echo $henanapi
+if [[ $1 == "prod" ]]; then
+# 读取内容
+# cat ./js/api.js
+
+# 替换
+# sed -i 's/h5base/xxx/g' ./js/api.js
+
+# 删除所有包含‘h5base’的行
+# sed -i '/h5base/'d ./js/api.js
+
+# 删除所有
+cat /dev/null > ./js/api.js
+
+# 删除12行
+# sed -i '12d' ./js/api.js
+
+# echo "=== api已修改 ==="
+echo 'var h5api="https://api.hacitd.com/buyer-api"' >> ./js/api.js
+echo 'var h5seller="https://api.hacitd.com/seller-api"' >> ./js/api.js
+echo 'var baseApi="http://zxkwx-boot.hacitd.com/wx-act"' >> ./js/api.js
+echo 'var henanapi="https://ha.tdg10086.cn/wx-act"' >> ./js/api.js
+
+fi
 
 echo ' >>>>>> start push <<<<<< '  
 echo " ====== 当前分支 ====== "  
